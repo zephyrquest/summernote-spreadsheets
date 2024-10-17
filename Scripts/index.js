@@ -23,7 +23,8 @@ $(document).ready(function() {
       spreadsheet: {
         width: 1200,
         height: 800,
-        replace: true
+        replace: true,
+        resize: true
       },
     });
   });
