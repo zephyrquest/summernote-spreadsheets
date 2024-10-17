@@ -308,21 +308,24 @@
                                         const activeSheet = spreadsheetState.find(sheet => sheet.name === activeSheetName)
 
                                         const selectedRange = spreadsheet.getSelectedRange()
-                                        const range = selectedRange.split(":")
 
-                                        const startCell = range[0]
-                                        const startCellNumber = getCellNumber(startCell)
-                                        const endCell = range[1]
-                                        const endCellNumber = getCellNumber(endCell)
+                                        if (!selectedRange) {
+                                            alert("No cells selected!")
+                                        }
+                                        else {
+                                            const range = selectedRange.split(":")
+                                            const startCell = range[0]
+                                            const startCellNumber = getCellNumber(startCell)
+                                            const endCell = range[1]
+                                            const endCellNumber = getCellNumber(endCell)
 
-                                        if (selectionEndRow != endCellNumber.row) {
-                                            selectionEndRow = endCellNumber.row
-                                        }
-                                        if (selectionEndColumn != endCellNumber.column) {
-                                            selectionEndColumn = endCellNumber.column
-                                        }
-                                        
-                                        if (selectedRange) {
+                                            if (selectionEndRow != endCellNumber.row) {
+                                                selectionEndRow = endCellNumber.row
+                                            }
+                                            if (selectionEndColumn != endCellNumber.column) {
+                                                selectionEndColumn = endCellNumber.column
+                                            }
+
                                             const selectedCells = captureSelectedCells(spreadsheet)
 
                                             const selectedViews = captureSelectedViewsAboveCells(activeSheet)
@@ -339,13 +342,10 @@
                                                     else {
                                                         insertNewImageToSummernote(context, imageData, spreadsheetState, resize)
                                                     }
-                                                    
+
                                                     $$("spreadsheet-window").close()
                                                 });
                                             }                   
-                                        }
-                                        else {
-                                            alert("No cells selected!")
                                         }
                                     }
 
