@@ -58,6 +58,32 @@
         return {row: rowNumber, column: columnNumber}
     }
 
+    function getCellFormatValue(value, format) {
+        let formattedValue = value
+
+        if (format == "price") {
+            formattedValue = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2
+            }).format(value)
+        }
+        else if (format == "int") {
+            formattedValue = new Intl.NumberFormat('en-US', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2 
+            }).format(value)
+        }
+        else if (format == "percent") {
+            formattedValue = new Intl.NumberFormat('en-US', {
+                style: 'percent',
+                maximumFractionDigits: 0
+            }).format(value)
+        }
+
+        return formattedValue
+    }
+
     function captureSelectedCells(spreadsheet) {
         const gridSelected = document.createElement('div')
         gridSelected.classList.add("webix_ss_center_scroll")
@@ -92,18 +118,32 @@
                 gridCell.setAttribute("aria-colindex", i - selectionStartColumn + 1)
                 gridCell.style.height = `${rowHeight}px`
 
-                const value = spreadsheet.getCellValue(j, i, false)
-                if (value) {
-                    const div = document.createElement('div')
-                    div.innerHTML = value
-                    gridCell.appendChild(div)
-                }
-                
                 const style = spreadsheet.getStyle(j, i)
                 if (style) {
                     gridCell.classList.add(`${style.id}`)
                 }
 
+                const value = spreadsheet.getCellValue(j, i, false)
+                if (value) {
+                    const div = document.createElement('div')
+
+                    if (typeof value === 'number' && !isNaN(value) && style && style.props) {
+                        const format = style.props.format
+                        if (format) {
+                            const formattedValue = getCellFormatValue(value, format)
+                            div.innerHTML = formattedValue
+                        }
+                        else {
+                            div.innerHTML = value
+                        }
+                    }
+                    else {
+                        div.innerHTML = value
+                    }
+
+                    gridCell.appendChild(div)
+                }
+                
                 column.appendChild(gridCell)
 
                 if (i == selectionStartColumn) {
@@ -306,7 +346,6 @@
                                         const spreadsheetState = spreadsheet.serialize({ sheets: true })
                                         const activeSheetName = spreadsheet.getActiveSheet()
                                         const activeSheet = spreadsheetState.find(sheet => sheet.name === activeSheetName)
-
                                         const selectedRange = spreadsheet.getSelectedRange()
 
                                         if (!selectedRange) {
