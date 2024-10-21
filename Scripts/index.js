@@ -21,10 +21,11 @@ $(document).ready(function() {
         ]
       },
       spreadsheet: {
+        fullscreen: true,
         width: 1200,
         height: 800,
-        replace: true,
-        resize: true
+        replaceImage: true,
+        resizeImage: true
       },
     });
   });

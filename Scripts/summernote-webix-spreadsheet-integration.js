@@ -328,9 +328,11 @@
                 modal: true,
                 position: "center",
                 head: title,
+                fullscreen: context.options.spreadsheet.fullscreen === undefined ? true : context.options.spreadsheet.fullscreen,
                 width: context.options.spreadsheet.width === undefined ? 1200 : context.options.spreadsheet.width,
                 height: context.options.spreadsheet.height === undefined ? 800 : context.options.spreadsheet.height,
-                resize: true,
+                resize: false,
+                css: "custom-spreadsheet",
                 body: {
                     rows: [
                         {
@@ -338,7 +340,7 @@
                             view: "spreadsheet",
                             toolbar: "full",
                             data: selectedImage == null ? null : JSON.parse(selectedImage.attr('data-spreadsheetState')),
-                            on: {   
+                            on: {
                                 onAfterSelect: function (selectedCells) {
                                     const spreadsheet = $$("spreadsheet-editor")
 
@@ -369,6 +371,7 @@
                                         startLeft += column.width
                                     }
 
+
                                     selectionStartTop = startTop
                                     selectionStartLeft = startLeft
                                 }
@@ -379,7 +382,7 @@
                             elements: [
                                 {
                                     view: "button",
-                                    css: "webix_danger",
+                                    css: "close-button",
                                     value: "Close without saving",
                                     on: {
                                         onItemClick: () => {
@@ -394,7 +397,7 @@
                                 },
                                 {
                                     view: "button",
-                                    css: "webix_primary",
+                                    css: "save-button",
                                     value: "Save and close",
                                     on: {
                                         onItemClick: () => {
@@ -428,8 +431,8 @@
                                                 const selectedArea = createSelectedArea(selectedCells, selectedViews)
 
                                                 if (selectedArea) {
-                                                    const replace = context.options.spreadsheet.replace
-                                                    const resize = context.options.spreadsheet.resize
+                                                    const replace = context.options.spreadsheet.replaceImage
+                                                    const resize = context.options.spreadsheet.resizeImage
                                                     generateImage(selectedArea).then(imageData => {
                                                         if (selectedImage && replace) {
                                                             replaceImageInSummernote(context, imageData, selectedImage, spreadsheetState, resize)
@@ -440,14 +443,14 @@
 
                                                         $$("spreadsheet-window").close()
                                                     });
-                                                }
+                                                }                   
                                             }
                                         }
-
                                     },
                                 }
                             ],
-                        }
+                        },
+                        
                     ],
                 }
             }).show();
