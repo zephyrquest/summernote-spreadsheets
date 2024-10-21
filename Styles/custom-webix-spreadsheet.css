@@ -1,0 +1,76 @@
+﻿.custom-spreadsheet .webix_header {
+    font-family: "Helvetica Neue", sans-serif !important;
+    font-size: 1.25rem !important;
+    font-weight: 500 !important;
+    color: #212529 !important;
+}
+
+.custom-spreadsheet .webix_toolbar.webix_ssheet_toolbar .webix_button,
+.custom-spreadsheet .webix_toolbar.webix_ssheet_toolbar .webix_inp_static,
+.custom-spreadsheet .webix_toolbar.webix_ssheet_toolbar .webix_el_combo input,
+.custom-spreadsheet .webix_toolbar.webix_ssheet_toolbar .webix_ssheet_text input,
+.custom-spreadsheet .ssheet_order_sheets {
+    background-color: white !important;
+    border-color: #D5D8DC !important;
+}
+
+.custom-spreadsheet .webix_toolbar.webix_ssheet_toolbar .webix_button:hover,
+.custom-spreadsheet .webix_toolbar.webix_ssheet_toolbar .webix_button:focus,
+.custom-spreadsheet .webix_toolbar.webix_ssheet_toolbar .webix_button:active,
+.custom-spreadsheet .webix_toolbar.webix_ssheet_toolbar .webix_inp_static:hover,
+.custom-spreadsheet .webix_toolbar.webix_ssheet_toolbar .webix_el_combo input:hover,
+.custom-spreadsheet .webix_toolbar.webix_ssheet_toolbar .webix_ssheet_text input:hover {
+    background-color: #dfe1e4 !important;
+    border-color: #D5D8DC !important;
+}
+
+.custom-spreadsheet .webix_toolbar.webix_ssheet_toolbar input:active {
+    border-color: #007bff !important;
+}
+
+.custom-spreadsheet .webix_control:not(.webix_ssheet_bold):not(.webix_ssheet_italic):not(.webix_ssheet_underline):not(.webix_ssheet_strike) input,
+.custom-spreadsheet .webix_control:not(.webix_ssheet_bold):not(.webix_ssheet_italic):not(.webix_ssheet_underline):not(.webix_ssheet_strike) button,
+.custom-spreadsheet .webix_control:not(.webix_ssheet_bold):not(.webix_ssheet_italic):not(.webix_ssheet_underline):not(.webix_ssheet_strike) textarea,
+.custom-spreadsheet .webix_inp_label,
+.custom-spreadsheet .webix_inp_top_label,
+.custom-spreadsheet .webix_inp_bottom_label,
+.custom-spreadsheet .webix_ssheet_subbar_title,
+.custom-spreadsheet .webix_view.webix_control.webix_el_label .webix_el_box,
+.custom-spreadsheet .ssheet_list_sheets .webix_list_item.ssheet_order_sheets {
+    font-family: "Helvetica Neue", sans-serif !important;
+}
+
+.custom-spreadsheet .webix_ssheet_toolbar_spacer {
+    background-color: #D5D8DC !important;
+}
+
+.custom-spreadsheet .webix_toolbar,
+.custom-spreadsheet .ssheet_list_sheets {
+    background-color: #F4F7FB !important;
+}
+
+.custom-spreadsheet .webix_area_selection {
+    background-color: #007bff !important;
+}
+
+.custom-spreadsheet .close-button button,
+.custom-spreadsheet .close-button button:hover,
+.custom-spreadsheet .close-button button:focus,
+.custom-spreadsheet .close-button button:active {
+    color: #dc3545 !important;
+    background-color: transparent !important;
+    border-color: #dc3545 !important;
+    border-width: 1px !important;
+    border-radius: .25rem !important;
+}
+
+.custom-spreadsheet .save-button button,
+.custom-spreadsheet .save-button button:hover
+.custom-spreadsheet .save-button button:focus
+.custom-spreadsheet .save-button button:active {
+    color: #28a745 !important;
+    background-color: transparent !important;
+    border-color: #28a745 !important;
+    border-width: 1px !important;
+    border-radius: .25rem !important;
+}
