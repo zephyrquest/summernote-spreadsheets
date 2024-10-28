@@ -12,6 +12,7 @@
 .custom-spreadsheet .ssheet_order_sheets {
     background-color: white !important;
     border-color: #D5D8DC !important;
+    outline: none !important;
 }
 
 .custom-spreadsheet .webix_toolbar.webix_ssheet_toolbar .webix_button:hover,
@@ -22,6 +23,14 @@
 .custom-spreadsheet .webix_toolbar.webix_ssheet_toolbar .webix_ssheet_text input:hover {
     background-color: #dfe1e4 !important;
     border-color: #D5D8DC !important;
+    outline: none !important;
+}
+
+.custom-spreadsheet .webix_toolbar.webix_ssheet_toolbar .webix_button[aria-pressed="true"] {
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    border-width: 2px;
+    outline: none !important;
 }
 
 .custom-spreadsheet .webix_toolbar.webix_ssheet_toolbar input:active {
@@ -53,24 +62,522 @@
     background-color: #007bff !important;
 }
 
-.custom-spreadsheet .close-button button,
-.custom-spreadsheet .close-button button:hover,
-.custom-spreadsheet .close-button button:focus,
-.custom-spreadsheet .close-button button:active {
+.webix_view.webix_window.webix_ssheet_dialog .ssheet_cancel_button .webix_button,
+.webix_modal_box.webix_confirm.webix_ssheet_confirm .webix_popup_button[aria-label="Cancel"] div {
     color: #dc3545 !important;
     background-color: transparent !important;
     border-color: #dc3545 !important;
     border-width: 1px !important;
     border-radius: .25rem !important;
+    outline: none !important;
 }
 
-.custom-spreadsheet .save-button button,
-.custom-spreadsheet .save-button button:hover
-.custom-spreadsheet .save-button button:focus
-.custom-spreadsheet .save-button button:active {
+.webix_view.webix_window.webix_ssheet_dialog .ssheet_cancel_button .webix_button:hover,
+.webix_view.webix_window.webix_ssheet_dialog .ssheet_cancel_button .webix_button:focus,
+.webix_view.webix_window.webix_ssheet_dialog .ssheet_cancel_button .webix_button:active,
+.webix_view.webix_window.webix_ssheet_dialog .ssheet_cancel_button .webix_button:hover,
+.webix_view.webix_window.webix_ssheet_dialog .ssheet_cancel_button .webix_button:focus,
+.webix_view.webix_window.webix_ssheet_dialog .ssheet_cancel_button .webix_button:active,
+.webix_modal_box.webix_confirm.webix_ssheet_confirm .webix_popup_button[aria-label="Cancel"] div:hover,
+.webix_modal_box.webix_confirm.webix_ssheet_confirm .webix_popup_button[aria-label="Cancel"] div:focus,
+.webix_modal_box.webix_confirm.webix_ssheet_confirm .webix_popup_button[aria-label="Cancel"] div:active {
+    color: white !important;
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    border-width: 1px !important;
+    border-radius: .25rem !important;
+    outline: none !important;
+}
+
+.webix_view.webix_window.webix_ssheet_dialog .webix_view.webix_layout_line .webix_el_button:not(.ssheet_cancel_button) .webix_button,
+.webix_modal_box.webix_confirm.webix_ssheet_confirm .webix_popup_button.confirm {
     color: #28a745 !important;
     background-color: transparent !important;
     border-color: #28a745 !important;
     border-width: 1px !important;
     border-radius: .25rem !important;
+    outline: none !important;
+}
+
+.webix_view.webix_window.webix_ssheet_dialog .webix_view.webix_layout_line .webix_el_button:not(.ssheet_cancel_button) .webix_button:hover,
+.webix_view.webix_window.webix_ssheet_dialog .webix_view.webix_layout_line .webix_el_button:not(.ssheet_cancel_button) .webix_button:focus,
+.webix_view.webix_window.webix_ssheet_dialog .webix_view.webix_layout_line .webix_el_button:not(.ssheet_cancel_button) .webix_button:active,
+.webix_modal_box.webix_confirm.webix_ssheet_confirm .webix_popup_button.confirm:hover,
+.webix_modal_box.webix_confirm.webix_ssheet_confirm .webix_popup_button.confirm:hover:focus,
+.webix_modal_box.webix_confirm.webix_ssheet_confirm .webix_popup_button.confirm:hover:active {
+    color: white !important;
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    border-width: 1px !important;
+    border-radius: .25rem !important;
+    outline: none !important;
+}
+
+.webix_popup_button,
+.webix_popup_button.confirm {
+    font-weight: 100 !important;
+}
+
+.webix_alert .webix_popup_title, .webix_confirm .webix_popup_title, .webix_prompt .webix_popup_title,
+.webix_alert .webix_popup_text, .webix_confirm .webix_popup_text, .webix_prompt .webix_popup_text {
+    box-shadow: inset 0 4px #007bff !important;
+}
+
+.custom-spreadsheet .close-button button {
+    color: #dc3545 !important;
+    background-color: transparent !important;
+    border-color: #dc3545 !important;
+    border-width: 1px !important;
+    border-radius: .25rem !important;
+    outline: none !important;
+}
+
+.custom-spreadsheet .close-button button:hover,
+.custom-spreadsheet .close-button button:focus,
+.custom-spreadsheet .close-button button:active {
+    color: white !important;
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    border-width: 1px !important;
+    border-radius: .25rem !important;
+    outline: none !important;
+}
+
+.custom-spreadsheet .save-button button {
+    color: #28a745 !important;
+    background-color: transparent !important;
+    border-color: #28a745 !important;
+    border-width: 1px !important;
+    border-radius: .25rem !important;
+    outline: none !important;
+}
+
+.custom-spreadsheet .save-button button:hover,
+.custom-spreadsheet .save-button button:focus,
+.custom-spreadsheet .save-button button:active {
+    color: white !important;
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    border-width: 1px !important;
+    border-radius: .25rem !important;
+    outline: none !important;
+}
+
+.webix_ssheet_method_param_active .webix_ssheet_method_param_name,
+.webix_ssheet_ui.webix_ssheet_ui_focused,
+.ssheet_chart .webix_ssheet_accordion .webix_accordionitem_header .webix_ssheet_series_icon:hover,
+.ssheet_chart .webix_ssheet_accordion .webix_accordionitem_header .webix_accordionitem_button:hover,
+.webix_cell.ss_filter_active .ssheet_filter_sign,
+.webix_ssheet_counter .webix_inp_counter_prev,
+.webix_el_counter:not(.webix_ssheet_zoom) input[type=text]:focus,
+a.docs,
+.webix_pager_item,
+.webix_password_editor .webix_icon:hover,
+.webix_ss_sort_num,
+.webix_hcell .webix_excel_filter:hover,
+.webix_hcell.webix_ss_filter_active .webix_excel_filter,
+.webix_hcell.webix_ss_filter_active .webix_excel_filter:hover,
+.webix_cal_icon:hover,
+.webix_cal_time:hover,
+.webix_cal_month_name:hover,
+.webix_cal_icon:focus,
+.webix_cal_time:focus,
+.webix_cal_month_name:focus,
+.webix_cal_done,
+.webix_comments_message a,
+.webix_comments_mention,
+.webix_comments_avatar_text,
+.webix_comments_more,
+.webix_popup_button,
+.webix_popup_button.confirm,
+.webix_timeboard .webix_day_part .webix_el_box,
+.webix_timeboard .webix_day_part .webix_el_box:hover,
+.webix_timeboard .webix_day_part .webix_el_box:focus,
+.webix_secondary .webix_button,
+.webix_secondary .webix_button .webix_icon,
+.webix_secondary .webix_button .webix_img_btn_text,
+.webix_secondary .webix_button .webix_icon_btn,
+.webix_primary .webix_button,
+.webix_primary .webix_button:hover,
+.webix_primary .webix_button:focus,
+.webix_primary .webix_button:active,
+.webix_primary .webix_pressed .webix_button,
+.webix_button,
+.webixbutton,
+.webix_img_btn .webix_icon,
+.webix_img_btn_text,
+.webix_multitext_icon:hover,
+.webix_multitext_icon:active,
+.webix_inp_counter_prev,
+.webix_inp_counter_next,
+.webix_segment_0,
+.webix_segment_1,
+.webix_segment_N,
+.webix_item_tab,
+.webix_item_tab.webix_selected,
+.webix_dbllist .dbllist_button .webix_icon,
+.buttonFont,
+.webix_accordionitem.horizontal.collapsed .webix_accordionitem_header,
+.webix_accordionitem.collapsed .webix_accordionitem_header,
+.webix_accordionitem.horizontal.collapsed .webix_accordionitem_header .webix_accordionitem_button,
+.webix_accordionitem.collapsed .webix_accordionitem_header .webix_accordionitem_button,
+.webix_accordionitem.horizontal.collapsed .webix_accordionitem_header .webix_accordionitem_label .webix_icon,
+.webix_accordionitem.collapsed .webix_accordionitem_header .webix_accordionitem_label .webix_icon,
+.webix_layout_accordion.webix_dark .webix_accordionitem_header.collapsed,
+.webix_layout_accordion.webix_dark .webix_accordionitem_header.collapsed .webix_accordionitem_button,
+.webix_view .webix_pager_item,
+.webix_checksuggest_select_all:hover .webix_label_right,
+.webix_checksuggest_select_all .webix_label_right,
+.buttonStyle,
+.webix_all_tabs .webix_item_tab,
+.webix_all_tabs .webix_tab_more_icon .webix_icon,
+.webix_el_tabbar .webixtype_icon .webix_img_btn .webix_icon_btn,
+.webix_el_tabbar .webixtype_iconTop .webix_icon,
+.webix_el_tabbar .webixtype_image .webix_icon,
+.webix_el_tabbar .webixtype_iconTop .webix_item_tab.webix_selected .webix_img_btn_text,
+.webix_el_tabbar .webixtype_image .webix_item_tab.webix_selected .webix_img_btn_text,
+.webix_el_tabbar .webixtype_iconTop .webix_item_tab.webix_selected .webix_icon,
+.webix_el_tabbar .webixtype_image .webix_item_tab.webix_selected .webix_icon,
+.webix_el_tabbar .webixtype_iconTop .webix_item_tab.webix_selected .webix_img_btn,
+.webix_el_tabbar .webixtype_image .webix_item_tab.webix_selected .webix_img_btn,
+.webix_el_tabbar .webixtype_icon .webix_item_tab .webix_img_btn,
+.webix_el_tabbar .webixtype_iconTop .webix_item_tab .webix_img_btn,
+.webix_el_tabbar .webixtype_image .webix_item_tab .webix_img_btn,
+.webix_el_tabbar .webixtype_icon .webix_tab_more_icon .webix_icon,
+.webix_el_tabbar .webixtype_iconTop .webix_tab_more_icon .webix_icon,
+.webix_el_tabbar .webixtype_image .webix_tab_more_icon .webix_icon,
+.webix_el_tabbar .webixtype_bottom .webix_tab_more_icon .webix_icon,
+.passiveBarBG,
+.webix_segment_0,
+.webix_segment_1,
+.webix_segment_N,
+.webix_checkbox_1 .webix_custom_checkbox,
+.webix_custom_checkbox:focus,
+.webix_el_radio .webix_radio_1 .webix_custom_radio,
+.webix_el_radio .webix_custom_radio:focus,
+.webix_cal_icon:hover,
+.webix_cal_time:hover,
+.webix_cal_month_name:hover,
+.webix_cal_icon:focus,
+.webix_cal_time:focus,
+.webix_cal_month_name:focus,
+.webix_cal_prev_button:hover,
+.webix_cal_next_button:hover,
+.webix_cal_prev_button:focus,
+.webix_cal_next_button:focus,
+.webix_cal_body .webix_cal_event,
+.webix_sidebar .webix_tree_item.webix_selected,
+.webix_sidebar .webix_tree_item.webix_sidebar_selected,
+.webix_sidebar .webix_tree_item.webix_selected .webix_sidebar_icon,
+.webix_sidebar .webix_tree_item.webix_sidebar_selected .webix_sidebar_icon,
+.webix_sidebar .webix_tree_item.webix_selected .webix_sidebar_dir_icon,
+.webix_sidebar .webix_tree_item.webix_sidebar_selected .webix_sidebar_dir_icon,
+.webix_sidebar .webix_tree_item.webix_selected span,
+.webix_sidebar_popup_list .webix_list_item.webix_sidebar_selected,
+.webix_sidebar_popup_list .webix_list_item.webix_selected,
+.webix_sidebar_popup .webix_sidebar_popup_title.webix_selected,
+.webix_sidebar.webix_dark .webix_tree_item.webix_selected,
+.webix_sidebar.webix_dark .webix_tree_item.webix_sidebar_selected,
+.webix_sidebar_popup.webix_dark .webix_sidebar_popup_title.webix_selected .webix_template,
+.webix_sidebar_popup_list.webix_dark .webix_list_item.webix_selected,
+.webix_sidebar_popup_list.webix_dark .webix_list_item.webix_sidebar_selected{
+    color: #007bff !important;
+}
+
+.webix_header.webix_dark .webix_selected.webix_segment_0,
+.webix_header.webix_dark .webix_selected.webix_segment_1,
+.webix_header.webix_dark .webix_selected.webix_segment_N,
+.webix_header.webix_dark .webix_selected.webix_segment_0:hover,
+.webix_header.webix_dark .webix_selected.webix_segment_1:hover,
+.webix_header.webix_dark .webix_selected.webix_segment_N:hover,
+.webix_header.webix_dark .webix_selected.webix_segment_0:focus,
+.webix_header.webix_dark .webix_selected.webix_segment_1:focus,
+.webix_header.webix_dark .webix_selected.webix_segment_N:focus,
+.webix_header.webix_dark .webix_selected.webix_segment_0:active,
+.webix_header.webix_dark .webix_selected.webix_segment_1:active,
+.webix_header.webix_dark .webix_selected.webix_segment_N:active,
+.webix_accordionitem_header.webix_dark .webix_selected.webix_segment_0,
+.webix_accordionitem_header.webix_dark .webix_selected.webix_segment_1,
+.webix_accordionitem_header.webix_dark .webix_selected.webix_segment_N,
+.webix_accordionitem_header.webix_dark .webix_selected.webix_segment_0:hover,
+.webix_accordionitem_header.webix_dark .webix_selected.webix_segment_1:hover,
+.webix_accordionitem_header.webix_dark .webix_selected.webix_segment_N:hover,
+.webix_accordionitem_header.webix_dark .webix_selected.webix_segment_0:focus,
+.webix_accordionitem_header.webix_dark .webix_selected.webix_segment_1:focus,
+.webix_accordionitem_header.webix_dark .webix_selected.webix_segment_N:focus,
+.webix_accordionitem_header.webix_dark .webix_selected.webix_segment_0:active,
+.webix_accordionitem_header.webix_dark .webix_selected.webix_segment_1:active,
+.webix_accordionitem_header.webix_dark .webix_selected.webix_segment_N:active,
+.webix_pager_item_selected:hover,
+.webix_pager_item_selected:focus,
+.webix_pager_item_selected:active,
+.webix_dataview_item.webix_selected,
+.webix_dtable .webix_resize_handle_x .webix_handle_content,
+.webix_dtable .webix_resize_handle_y .webix_handle_content,
+.webix_resize_frame,
+.webix_property_label_line.webix_dark .webix_selected.webix_segment_0,
+.webix_property_label_line.webix_dark .webix_selected.webix_segment_1,
+.webix_property_label_line.webix_dark .webix_selected.webix_segment_N,
+.webix_property_label_line.webix_dark .webix_selected.webix_segment_0:hover,
+.webix_property_label_line.webix_dark .webix_selected.webix_segment_1:hover,
+.webix_property_label_line.webix_dark .webix_selected.webix_segment_N:hover,
+.webix_property_label_line.webix_dark .webix_selected.webix_segment_0:focus,
+.webix_property_label_line.webix_dark .webix_selected.webix_segment_1:focus,
+.webix_property_label_line.webix_dark .webix_selected.webix_segment_N:focus,
+.webix_property_label_line.webix_dark .webix_selected.webix_segment_0:active,
+.webix_property_label_line.webix_dark .webix_selected.webix_segment_1:active,
+.webix_property_label_line.webix_dark .webix_selected.webix_segment_N:active,
+.webix_popup_button.confirm,
+.webix_popup_button.confirm:hover,
+.webix_popup_button.confirm:focus,
+.webix_popup_button.confirm:active,
+.webix_segment_0.webix_selected,
+.webix_segment_1.webix_selected,
+.webix_segment_N.webix_selected,
+.webix_menu-x .webix_list_item:hover,
+.webix_menu-x .webix_list_item:active,
+.webix_menu-x .webix_list_item:focus,
+.webix_menu-x .webix_list_item,
+.webix_toolbar.webix_layout_subbar.webix_dark .webix_selected.webix_segment_0,
+.webix_toolbar.webix_layout_subbar.webix_dark .webix_selected.webix_segment_1,
+.webix_toolbar.webix_layout_subbar.webix_dark .webix_selected.webix_segment_N,
+.webix_toolbar.webix_layout_subbar.webix_dark .webix_selected.webix_segment_0:hover,
+.webix_toolbar.webix_layout_subbar.webix_dark .webix_selected.webix_segment_1:hover,
+.webix_toolbar.webix_layout_subbar.webix_dark .webix_selected.webix_segment_N:hover,
+.webix_toolbar.webix_layout_subbar.webix_dark .webix_selected.webix_segment_0:focus,
+.webix_toolbar.webix_layout_subbar.webix_dark .webix_selected.webix_segment_1:focus,
+.webix_toolbar.webix_layout_subbar.webix_dark .webix_selected.webix_segment_N:focus,
+.webix_toolbar.webix_layout_subbar.webix_dark .webix_selected.webix_segment_0:active,
+.webix_toolbar.webix_layout_subbar.webix_dark .webix_selected.webix_segment_1:active,
+.webix_toolbar.webix_layout_subbar.webix_dark .webix_selected.webix_segment_N:active,
+.webix_slider_box .webix_slider_left,
+.webix_slider_alt .webix_slider_box .webix_slider_left,
+.layoutBarBG.webix_dark .webix_selected.webix_segment_0,
+.layoutBarBG.webix_dark .webix_selected.webix_segment_1,
+.layoutBarBG.webix_dark .webix_selected.webix_segment_N,
+.layoutBarBG.webix_dark .webix_selected.webix_segment_0:hover,
+.layoutBarBG.webix_dark .webix_selected.webix_segment_1:hover,
+.layoutBarBG.webix_dark .webix_selected.webix_segment_N:hover,
+.layoutBarBG.webix_dark .webix_selected.webix_segment_0:focus,
+.layoutBarBG.webix_dark .webix_selected.webix_segment_1:focus,
+.layoutBarBG.webix_dark .webix_selected.webix_segment_N:focus,
+.layoutBarBG.webix_dark .webix_selected.webix_segment_0:active,
+.layoutBarBG.webix_dark .webix_selected.webix_segment_1:active,
+.layoutBarBG.webix_dark .webix_selected.webix_segment_N:active,
+.layoutBarBG.webix_dark .webix_control,
+.webix_toolbar.webix_dark .webix_selected.webix_segment_0,
+.webix_toolbar.webix_dark .webix_selected.webix_segment_1,
+.webix_toolbar.webix_dark .webix_selected.webix_segment_N,
+.webix_toolbar.webix_dark .webix_selected.webix_segment_0:hover,
+.webix_toolbar.webix_dark .webix_selected.webix_segment_1:hover,
+.webix_toolbar.webix_dark .webix_selected.webix_segment_N:hover,
+.webix_toolbar.webix_dark .webix_selected.webix_segment_0:focus,
+.webix_toolbar.webix_dark .webix_selected.webix_segment_1:focus,
+.webix_toolbar.webix_dark .webix_selected.webix_segment_N:focus,
+.webix_toolbar.webix_dark .webix_selected.webix_segment_0:active,
+.webix_toolbar.webix_dark .webix_selected.webix_segment_1:active,
+.webix_toolbar.webix_dark .webix_selected.webix_segment_N:active,
+.webix_block_selection,
+.webix_area_selection,
+.webix_area_selection_handle,
+.webix_dtable_focused .webix_area_selection,
+.webix_dtable_focused .webix_area_selection_handle,
+.webix_view .webix_pager_item_selected,
+.webix_view .webix_pager_item_selected:hover,
+.webix_view .webix_pager_item_selected:focus,
+.webix_view .webix_pager_item_selected:active,
+.webix_el_tabbar .webixtype_iconTop .webix_item_tab.webix_selected .webix_icon_btn,
+.webix_el_tabbar .webixtype_image .webix_item_tab.webix_selected .webix_icon_btn,
+.webix_selected.webix_segment_0:hover,
+.webix_selected.webix_segment_1:hover,
+.webix_selected.webix_segment_N:hover,
+.webix_selected.webix_segment_0:focus,
+.webix_selected.webix_segment_1:focus,
+.webix_selected.webix_segment_N:focus,
+.webix_selected.webix_segment_0:active,
+.webix_selected.webix_segment_1:active,
+.webix_selected.webix_segment_N:active,
+.webix_cal_body .webix_cal_select .webix_cal_day_inner,
+.webix_cal_body .webix_cal_today.webix_cal_select .webix_cal_day_inner,
+.webix_cal_body .webix_cal_select .webix_cal_day_inner:hover,
+.webix_cal_body .webix_cal_today.webix_cal_select .webix_cal_day_inner:hover,
+.webix_cal_body .webix_cal_select:focus .webix_cal_day_inner,
+.webix_cal_body .webix_cal_today.webix_cal_select:focus .webix_cal_day_inner,
+.webix_cal_body .webix_cal_block.webix_selected span,
+.webix_cal_body .webix_cal_block.webix_selected span:hover,
+.webix_cal_body .webix_cal_block.webix_selected:focus span,
+.webix_cal_body .webix_cal_range_start .webix_cal_day_inner,
+.webix_cal_body .webix_cal_range_end .webix_cal_day_inner,
+.webix_cal_body .webix_cal_today.webix_cal_range_start .webix_cal_day_inner,
+.webix_cal_body .webix_cal_today.webix_cal_range_end .webix_cal_day_inner,
+.webix_progress_top .webix_progress_state,
+.webix_progress_bottom .webix_progress_state,
+.webix_switch_box.webix_switch_on,
+.portlet_marker,
+.portlet_markertop,
+.portlet_markerbottom,
+.portlet_markerleft,
+.portlet_markerright {
+    background-color: #007bff !important;
+}
+
+.webix_header.webix_dark .webix_control,
+.webix_accordionitem_header.webix_dark .webix_control,
+.webix_chart_resizer:focus,
+.webix_resize_frame,
+.webix_property_label_line.webix_dark .webix_control,
+.webix_segment_0.webix_selected,
+.webix_segment_1.webix_selected,
+.webix_segment_N.webix_selected,
+.webix_toolbar.webix_layout_subbar.webix_dark .webix_control,
+.webix_slider_box .webix_slider_handle:focus,
+.webix_slider_alt .webix_slider_box .webix_slider_handle:focus,
+.webix_toolbar.webix_dark .webix_control,
+.webix_dtable .webix_ss_filter select:focus,
+.webix_dtable .webix_ss_filter input:focus,
+.webix_popup_button.confirm,
+.webix_dataview_item.tiles.webix_selected{
+    border-color: #007bff !important;
+}
+
+.webix_chart_frame {
+    border-left: 1px solid #007bff !important;
+    border-right: 1px solid #007bff !important;
+}
+
+.webix_alert .webix_popup_title,
+.webix_confirm .webix_popup_title,
+.webix_prompt .webix_popup_title,
+.webix_alert .webix_popup_text,
+.webix_confirm .webix_popup_text,
+.webix_prompt .webix_popup_text {
+    box-shadow: inset 0 4px #007bff !important;
+}
+
+.webix_color_row .webix_color_selected > * {
+    box-shadow: #007bff 0 0 0 2px !important;
+}
+.webix_color_row .webix_color_selected:focus > * {
+    box-shadow: #007bff 0 0 0 2px !important;
+}
+
+.webix_color_out_text:focus {
+    border: 1px solid #007bff !important;
+}
+
+.webix_sparklines_line {
+    stroke: #007bff !important;
+}
+.webix_sparklines_item {
+    fill: #007bff !important;
+}
+.webix_sparklines_bar {
+    fill: #007bff !important;
+}
+
+.webix_dtable .webix_select_mark > div.webix_row_select {
+    box-shadow: inset 2px 0 #007bff !important;
+}
+
+.webix_dtable .webix_ss_header .webix_hcolumn div.webix_last_row,
+.webix_dtable .webix_ss_header .webix_span.webix_last_row {
+    border-bottom: 1px solid #007bff !important;
+}
+.webix_dtable .webix_ss_footer .webix_hcolumn > div:first-child,
+.webix_dtable .webix_ss_footer .webix_hcell[row="0"] {
+    border-top: 1px solid #007bff !important;
+}
+
+.webix_dtable div.webix_ss_vscroll_header {
+    border-bottom-color: #007bff !important;
+}
+.webix_dtable div.webix_ss_vscroll_footer {
+    border-top-color: #007bff !important;
+}
+.webix_view .webix_dt_editor input,
+.webix_view .webix_dt_editor select {
+    border-color: #007bff !important;
+}
+
+.focusStyle {
+    border: 1px solid #007bff !important;
+}
+
+.webix_el_search input:focus,
+.webix_el_text input:focus,
+.webix_el_combo input:focus,
+.webix_el_colorpicker input:focus,
+.webix_el_datepicker input:focus {
+    border: 1px solid #007bff !important;
+}
+
+.webix_el_richselect .webix_inp_static:focus,
+.webix_el_datepicker .webix_inp_static:focus,
+.webix_el_colorpicker .webix_inp_static:focus {
+    border: 1px solid #007bff !important;
+}
+.webix_el_textarea textarea:focus {
+    border: 1px solid #007bff !important;
+}
+.webix_el_select select:focus {
+    border: 1px solid #007bff !important;
+}
+
+.webix_focused .webix_inp_static {
+    border: 1px solid #007bff !important;
+}
+.webix_multilist .wxi-checkbox-marked {
+    color: #007bff !important;
+}
+
+.webix_all_tabs .webix_item_tab.webix_selected {
+    box-shadow: inset 0 -2px #007bff !important;
+}
+
+.webix_all_tabs .webix_item_tab.webix_selected:focus {
+    color: #007bff !important;
+    box-shadow: inset 0 -2px #007bff !important;
+}
+
+.webixtype_bottom .webix_item_tab.webix_selected {
+    box-shadow: inset 0 2px #007bff !important;
+    color: #007bff !important;
+}
+.webixtype_bottom .webix_item_tab.webix_selected:focus {
+    box-shadow: inset 0 2px #007bff !important;
+}
+
+.webix_cal_body .webix_cal_today .webix_cal_day_inner {
+    box-shadow: inset 0 0 0 1px #007bff !important;
+}
+
+.webix_sidebar.webix_sidebar_left .webix_tree_item.webix_sidebar_selected + .webix_tree_leaves .webix_tree_item,
+.webix_sidebar.webix_sidebar_left .webix_tree_item.webix_selected,
+.webix_sidebar.webix_sidebar_left .webix_tree_item.webix_sidebar_selected {
+    box-shadow: inset 2px 0 #007bff !important;
+}
+.webix_sidebar.webix_sidebar_right .webix_tree_item.webix_sidebar_selected + .webix_tree_leaves .webix_tree_item,
+.webix_sidebar.webix_sidebar_right .webix_tree_item.webix_selected,
+.webix_sidebar.webix_sidebar_right .webix_tree_item.webix_sidebar_selected {
+    box-shadow: inset -2px 0 #007bff !important;
+}
+
+.webix_sidebar_popup_left .webix_list_item.webix_selected,
+.webix_sidebar_popup_left .webix_list_item.webix_sidebar_selected {
+    box-shadow: inset 2px 0 #007bff !important;
+}
+.webix_sidebar_popup_right .webix_list_item.webix_selected,
+.webix_sidebar_popup_right .webix_list_item.webix_sidebar_selected {
+    box-shadow: inset -2px 0 #007bff !important;
+}
+
+.webix_list_item.webix_selected {
+    box-shadow: inset 2px 0 #007bff !important;
+}
+
+.webix_treemap_item:hover {
+    box-shadow: inset 0 0 0 1px #007bff !important;
+}
+.webix_treemap_item.webix_selected {
+    box-shadow: inset 0 0 0 2px #007bff !important;
 }
