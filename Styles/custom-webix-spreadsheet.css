@@ -129,7 +129,10 @@
     border-color: #dc3545 !important;
     border-width: 1px !important;
     border-radius: .25rem !important;
+    border-style: solid !important;
+    box-shadow: none !important;
     outline: none !important;
+    appearance: none !important;
 }
 
 .custom-spreadsheet .close-button button:hover,
@@ -140,7 +143,10 @@
     border-color: #dc3545 !important;
     border-width: 1px !important;
     border-radius: .25rem !important;
+    border-style: solid !important;
+    box-shadow: none !important;
     outline: none !important;
+    appearance: none !important;
 }
 
 .custom-spreadsheet .save-button button {
@@ -149,7 +155,10 @@
     border-color: #28a745 !important;
     border-width: 1px !important;
     border-radius: .25rem !important;
+    border-style: solid !important;
+    box-shadow: none !important;
     outline: none !important;
+    appearance: none !important;
 }
 
 .custom-spreadsheet .save-button button:hover,
@@ -160,7 +169,10 @@
     border-color: #28a745 !important;
     border-width: 1px !important;
     border-radius: .25rem !important;
+    border-style: solid !important;
+    box-shadow: none !important;
     outline: none !important;
+    appearance: none !important;
 }
 
 .webix_ssheet_method_param_active .webix_ssheet_method_param_name,
