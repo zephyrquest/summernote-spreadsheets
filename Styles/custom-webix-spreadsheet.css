@@ -49,6 +49,10 @@
     font-family: "Helvetica Neue", sans-serif !important;
 }
 
+.custom-spreadsheet .webix_cell {
+    font-family: "Helvetica Neue", sans-serif
+}
+
 .custom-spreadsheet .webix_ssheet_toolbar_spacer {
     background-color: #D5D8DC !important;
 }
