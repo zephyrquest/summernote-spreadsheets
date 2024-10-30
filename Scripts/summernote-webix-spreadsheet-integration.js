@@ -290,6 +290,8 @@
         const img = document.createElement('img')
         img.src = imageData
         img.setAttribute("data-spreadsheetState", JSON.stringify(spreadsheetState))
+        img.classList.add("spreadsheet-image")
+        
         img.onload = function () {
             if (resize) {
                 const maxWidth = $(context.$note.parent()).width()
@@ -305,7 +307,7 @@
 
     function insertNewImageToSummernote(context, imageData, spreadsheetState, resize) {
         const img = createImageElement(context, imageData, spreadsheetState, resize)
-
+        
         const div = document.createElement('div')
         div.style.marginTop = "20px"
         div.style.marginBottom = "20px"
@@ -318,7 +320,7 @@
 
     function replaceImageInSummernote(context, imageData, oldImage, spreadsheetState, resize) {
         const img = createImageElement(context, imageData, spreadsheetState, resize)
-
+        
         oldImage.replaceWith(img)
     }
 
@@ -497,7 +499,11 @@
                     }
                 })
 
-                return button.render()
+                const editSpreadsheetButton = button.render()
+                $(editSpreadsheetButton).addClass('edit-spreadsheet-button')
+                $(editSpreadsheetButton).css('display', 'none')
+                
+                return editSpreadsheetButton
             })
         }
     })

@@ -14,7 +14,6 @@ $(document).ready(function() {
       ],
       popover: {
         image: [
-          ["imagesize", ["imageSize100", "imageSize50", "imageSize25"]],
           ["float", ["floatLeft", "floatRight", "floatNone"]],
           ["remove", ["removeMedia"]],
           ["custom", ["edit_spreadsheet"]],
@@ -27,5 +26,24 @@ $(document).ready(function() {
         replaceImage: true,
         resizeImage: true
       },
+      callbacks: {
+        onMousedown: function(e) {
+          const target = e.target
+
+          if(target.tagName === 'IMG') {
+            const editSpreadsheetButton = document.querySelector('.edit-spreadsheet-button')
+            if(!editSpreadsheetButton) {
+              return
+            }
+
+            if(target.classList.contains('spreadsheet-image') && target.hasAttribute('data-spreadsheetState')) {
+              editSpreadsheetButton.style.display = 'inline-block'
+            }
+            else {
+              editSpreadsheetButton.style.display = 'none'
+            }
+          }
+        }
+      }
     });
   });
