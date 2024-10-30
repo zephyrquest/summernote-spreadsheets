@@ -126,7 +126,9 @@
                 const value = spreadsheet.getCellValue(j, i, false)
                 if (value) {
                     const div = document.createElement('div')
-
+                    div.style.position = 'absolute'
+                    div.style.whiteSpace = 'nowrap'
+                    
                     if (typeof value === 'number' && !isNaN(value) && style && style.props) {
                         const format = style.props.format
                         if (format) {

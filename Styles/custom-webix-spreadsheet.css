@@ -57,6 +57,11 @@
     background-color: #D5D8DC !important;
 }
 
+.custom-spreadsheet .webix_cell div {
+    position: absolute !important;
+    white-space: nowrap !important;
+}
+
 .custom-spreadsheet .webix_toolbar,
 .custom-spreadsheet .ssheet_list_sheets {
     background-color: #F4F7FB !important;
