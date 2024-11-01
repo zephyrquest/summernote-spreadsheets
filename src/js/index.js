@@ -3,7 +3,7 @@ webix.env.cdn = "https://cdn.webix.com/";
 
 $(document).ready(function() {
     $('#editor').summernote({
-      height: 400,
+      height: 600,
       toolbar: [
         ["style", ["bold", "italic", "underline", "clear"]],
         ["font", ["strikethrough", "superscript", "subscript"]],
@@ -20,7 +20,7 @@ $(document).ready(function() {
         ]
       },
       spreadsheet: {
-        fullscreen: true,
+        fullscreen: false,
         width: 1200,
         height: 800,
         replaceImage: true,
