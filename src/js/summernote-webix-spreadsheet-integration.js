@@ -346,6 +346,7 @@
                             menu: true,
                             rowCount: 50,
                             columnCount: 26,
+                            readonly: false,
                             data: selectedImage == null ? null : JSON.parse(selectedImage.attr('data-spreadsheetState')),
                             on: {
                                 onAfterSelect: function (selectedCells) {

@@ -12,7 +12,10 @@
 .custom-spreadsheet .ssheet_order_sheets {
     background-color: white !important;
     border-color: #D5D8DC !important;
+    border-style: solid !important;
+    box-shadow: none !important;
     outline: none !important;
+    appearance: none !important;
 }
 
 .custom-spreadsheet .webix_toolbar.webix_ssheet_toolbar .webix_button:hover,
@@ -23,14 +26,20 @@
 .custom-spreadsheet .webix_toolbar.webix_ssheet_toolbar .webix_ssheet_text input:hover {
     background-color: #dfe1e4 !important;
     border-color: #D5D8DC !important;
+    border-style: solid !important;
+    box-shadow: none !important;
     outline: none !important;
+    appearance: none !important;
 }
 
 .custom-spreadsheet .webix_toolbar.webix_ssheet_toolbar .webix_button[aria-pressed="true"] {
     background-color: #ffc107 !important;
     border-color: #ffc107 !important;
     border-width: 2px;
+    border-style: solid !important;
+    box-shadow: none !important;
     outline: none !important;
+    appearance: none !important;
 }
 
 .custom-spreadsheet .webix_toolbar.webix_ssheet_toolbar input:active {
@@ -78,7 +87,10 @@
     border-color: #dc3545 !important;
     border-width: 1px !important;
     border-radius: .25rem !important;
+    border-style: solid !important;
+    box-shadow: none !important;
     outline: none !important;
+    appearance: none !important;
 }
 
 .webix_view.webix_window.webix_ssheet_dialog .ssheet_cancel_button .webix_button:hover,
@@ -95,7 +107,10 @@
     border-color: #dc3545 !important;
     border-width: 1px !important;
     border-radius: .25rem !important;
+    border-style: solid !important;
+    box-shadow: none !important;
     outline: none !important;
+    appearance: none !important;
 }
 
 .webix_view.webix_window.webix_ssheet_dialog .webix_view.webix_layout_line .webix_el_button:not(.ssheet_cancel_button) .webix_button,
@@ -105,7 +120,10 @@
     border-color: #28a745 !important;
     border-width: 1px !important;
     border-radius: .25rem !important;
+    border-style: solid !important;
+    box-shadow: none !important;
     outline: none !important;
+    appearance: none !important;
 }
 
 .webix_view.webix_window.webix_ssheet_dialog .webix_view.webix_layout_line .webix_el_button:not(.ssheet_cancel_button) .webix_button:hover,
@@ -119,7 +137,10 @@
     border-color: #28a745 !important;
     border-width: 1px !important;
     border-radius: .25rem !important;
+    border-style: solid !important;
+    box-shadow: none !important;
     outline: none !important;
+    appearance: none !important;
 }
 
 .webix_popup_button,
@@ -182,6 +203,17 @@
     box-shadow: none !important;
     outline: none !important;
     appearance: none !important;
+}
+
+.webix_win_content .webix_template,
+.webix_win_content .webix_win_body .webix_view,
+.webix_win_content .webix_win_body .webix_el_box,
+.webix_win_content .webix_win_body label,
+.webix_win_content .webix_win_body input,
+.webix_win_content .webix_win_body button,
+.webix_win_content .webix_win_body .webix_placeholder,
+.webix_win_content .webix_win_body .webix_hcolumn {
+    font-family: "Helvetica Neue", sans-serif !important;
 }
 
 .webix_ssheet_method_param_active .webix_ssheet_method_param_name,
