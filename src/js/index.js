@@ -19,6 +19,7 @@ $(document).ready(function() {
           ["custom", ["edit_spreadsheet"]],
         ]
       },
+      // spreadsheet configurations
       spreadsheet: {
         fullscreen: false,
         width: 1200,
@@ -30,6 +31,10 @@ $(document).ready(function() {
         onMousedown: function(e) {
           const target = e.target
 
+          /*
+          Check if an image has been selected. If the image is a spreadsheet, the popup button to reopen the spreadsheet
+          is shown, otherwise it is hidden.
+           */
           if(target.tagName === 'IMG') {
             const editSpreadsheetButton = document.querySelector('.edit-spreadsheet-button')
             if(!editSpreadsheetButton) {

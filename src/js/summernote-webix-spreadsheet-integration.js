@@ -19,6 +19,7 @@
 
 (function ($) {
 
+    // these variables are used to determine the position of the selected area in the viewport
     let selectionStartTop = 0
     let selectionStartLeft = 0
     let selectionHeight = 0
@@ -28,7 +29,7 @@
     let selectionStartColumn = 0
     let selectionEndColumn = 0
 
-
+    // convert the column labeled with letters to a number
     function getColumnNumber(column) {
         let digits = new Array(column.length);
 
@@ -58,23 +59,24 @@
         return {row: rowNumber, column: columnNumber}
     }
 
+    // this method is used to visually represent a cell number in the generated image if it has a specific formatting
     function getCellFormatValue(value, format) {
         let formattedValue = value
 
-        if (format == "price") {
+        if (format === "price") {
             formattedValue = new Intl.NumberFormat('en-US', {
                 style: 'currency',
                 currency: 'USD',
                 minimumFractionDigits: 2
             }).format(value)
         }
-        else if (format == "int") {
+        else if (format === "int") {
             formattedValue = new Intl.NumberFormat('en-US', {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2 
             }).format(value)
         }
-        else if (format == "percent") {
+        else if (format === "percent") {
             formattedValue = new Intl.NumberFormat('en-US', {
                 style: 'percent',
                 maximumFractionDigits: 0
@@ -84,6 +86,7 @@
         return formattedValue
     }
 
+    // create the container element that includes all the cells inside the selected area
     function captureSelectedCells(spreadsheet) {
         const gridSelected = document.createElement('div')
         gridSelected.classList.add("webix_ss_center_scroll")
@@ -148,7 +151,7 @@
                 
                 column.appendChild(gridCell)
 
-                if (i == selectionStartColumn) {
+                if (i === selectionStartColumn) {
                     totalHeight += rowHeight
                 }   
             }
@@ -168,6 +171,7 @@
         return gridSelected
     }
 
+    // create the container element that includes the charts and/or images above the cells (if present)
     function captureSelectedViewsAboveCells(activeSheet) {
         const views = activeSheet.content.views
 
@@ -181,7 +185,10 @@
                 const width = view[4].width
                 const height = view[4].height
 
-                //check if view is inside selected area
+                /*
+                Check if the view is inside the selected area. If a part of the view is outside the selected area,
+                the view is discarded.
+                 */
                 if (leftPos - selectionStartLeft >= 0
                     && leftPos + width <= selectionStartLeft + selectionWidth
                     && topPos - selectionStartTop >= 0
@@ -253,6 +260,10 @@
         return div
     }
 
+    /*
+    Generate the image using html2canvas. The style tags in the head section are also included,
+    in order to maintain the style of the cells in the generated image
+     */
     async function generateImage(selectedArea) {
         const div = document.createElement('div')
         div.style.width = selectedArea.style.width
@@ -293,6 +304,7 @@
         img.classList.add("spreadsheet-image")
         
         img.onload = function () {
+            // resize the image if it is larger than summernote's viewport
             if (resize) {
                 const maxWidth = $(context.$note.parent()).width()
                 if (img.width > maxWidth) {
@@ -350,6 +362,8 @@
                             data: selectedImage == null ? null : JSON.parse(selectedImage.attr('data-spreadsheetState')),
                             on: {
                                 onAfterSelect: function (selectedCells) {
+                                    // calculate the position of the selected area in the viewport
+
                                     const spreadsheet = $$("spreadsheet-editor")
 
                                     const length = selectedCells.length
@@ -425,10 +439,10 @@
                                                 const endCell = range[1]
                                                 const endCellNumber = getCellNumber(endCell)
 
-                                                if (selectionEndRow != endCellNumber.row) {
+                                                if (selectionEndRow !== endCellNumber.row) {
                                                     selectionEndRow = endCellNumber.row
                                                 }
-                                                if (selectionEndColumn != endCellNumber.column) {
+                                                if (selectionEndColumn !== endCellNumber.column) {
                                                     selectionEndColumn = endCellNumber.column
                                                 }
 
