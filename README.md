@@ -40,11 +40,11 @@ create visual snapshots of specific cell ranges to add them as images to your Su
         charset="utf-8"></script>
 
 <!-- Webix -->
-<link href="src/css/webix/webix.css" rel="stylesheet" type="text/css"/>
+<link href="src/css/webix/webix.min.css" rel="stylesheet" type="text/css"/>
 <script src="src/js/webix/webix.js" type="text/javascript" charset="utf-8"></script>
 
 <!-- Webix SpreadSheet -->
-<link href="src/css/webix/spreadsheet.css" rel="stylesheet" type="text/css"/>
+<link href="src/css/webix/spreadsheet.min.css" rel="stylesheet" type="text/css"/>
 <script src="src/js/webix/spreadsheet.js" type="text/javascript" charset="utf-8"></script>
 ```
 
