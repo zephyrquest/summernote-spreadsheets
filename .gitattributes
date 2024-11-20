@@ -1,2 +1,2 @@
-src/css/webix/* linguist-vendored
-src/js/webix/* linguist-vendored
+src/css/webix/* linguist-vendored=true
+src/js/webix/* linguist-vendored=true
