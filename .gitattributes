@@ -1,2 +1,3 @@
 src/css/webix/* linguist-vendored=true
+src/css/custom/* linguist-vendored=true
 src/js/webix/* linguist-vendored=true
