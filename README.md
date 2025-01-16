@@ -105,3 +105,6 @@ $(document).ready(function () {
   });
 });
 ```
+
+## Reporting Issues
+If you encounter any problems or discover bugs, feel free to open a new issue. Your feedback is greatly appreciated!
