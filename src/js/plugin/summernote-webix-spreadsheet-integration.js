@@ -337,8 +337,16 @@
     div.style.marginBottom = "20px";
     div.appendChild(img);
 
-    $(context.$note).summernote("restoreRange");
-    $(context.$note).summernote("focus");
+    try {
+      $(context.$note).summernote("restoreRange");
+      $(context.$note).summernote("focus");
+    } catch (error) {
+      console.warn(
+        "restoreRange failed, inserting the image at the top of the summernote area.",
+        error
+      );
+    }
+
     $(context.$note).summernote("insertNode", div);
   }
 
@@ -404,6 +412,11 @@
 
                     const length = selectedCells.length;
 
+                    if (length == 0) {
+                      disableSaveButton();
+                      return;
+                    }
+
                     const startRow = selectedCells[0].row;
                     const startColumn = selectedCells[0].column;
 
@@ -431,6 +444,11 @@
 
                     selectionStartTop = startTop;
                     selectionStartLeft = startLeft;
+
+                    enableSaveButton();
+                  },
+                  onAfterSheetShow: function (name) {
+                    disableSaveButton();
                   },
                 },
               },
@@ -461,6 +479,12 @@
                     on: {
                       onItemClick: () => {
                         const spreadsheet = $$("spreadsheet-editor");
+
+                        const selectedRange = spreadsheet.getSelectedRange();
+                        if (!selectedRange) {
+                          return;
+                        }
+
                         const spreadsheetState = spreadsheet.serialize({
                           sheets: true,
                         });
@@ -468,61 +492,55 @@
                         const activeSheet = spreadsheetState.find(
                           (sheet) => sheet.name === activeSheetName
                         );
-                        const selectedRange = spreadsheet.getSelectedRange();
 
-                        if (!selectedRange) {
-                          alert("No cells selected!");
-                        } else {
-                          const range = selectedRange.split(":");
-                          const startCell = range[0];
-                          const startCellNumber = getCellNumber(startCell);
-                          const endCell = range[1];
-                          const endCellNumber = getCellNumber(endCell);
+                        const range = selectedRange.split(":");
+                        const startCell = range[0];
+                        const startCellNumber = getCellNumber(startCell);
+                        const endCell = range[1];
+                        const endCellNumber = getCellNumber(endCell);
 
-                          if (selectionEndRow !== endCellNumber.row) {
-                            selectionEndRow = endCellNumber.row;
-                          }
-                          if (selectionEndColumn !== endCellNumber.column) {
-                            selectionEndColumn = endCellNumber.column;
-                          }
+                        if (selectionEndRow !== endCellNumber.row) {
+                          selectionEndRow = endCellNumber.row;
+                        }
+                        if (selectionEndColumn !== endCellNumber.column) {
+                          selectionEndColumn = endCellNumber.column;
+                        }
 
-                          const selectedCells =
-                            captureSelectedCells(spreadsheet);
+                        const selectedCells = captureSelectedCells(spreadsheet);
 
-                          const selectedViews =
-                            captureSelectedViewsAboveCells(activeSheet);
+                        const selectedViews =
+                          captureSelectedViewsAboveCells(activeSheet);
 
-                          const selectedArea = createSelectedArea(
-                            selectedCells,
-                            selectedViews
-                          );
+                        const selectedArea = createSelectedArea(
+                          selectedCells,
+                          selectedViews
+                        );
 
-                          if (selectedArea) {
-                            const replace =
-                              context.options.spreadsheet.replaceImage;
-                            const resize =
-                              context.options.spreadsheet.resizeImage;
-                            generateImage(selectedArea).then((imageData) => {
-                              if (selectedImage && replace) {
-                                replaceImageInSummernote(
-                                  context,
-                                  imageData,
-                                  selectedImage,
-                                  spreadsheetState,
-                                  resize
-                                );
-                              } else {
-                                insertNewImageToSummernote(
-                                  context,
-                                  imageData,
-                                  spreadsheetState,
-                                  resize
-                                );
-                              }
+                        if (selectedArea) {
+                          const replace =
+                            context.options.spreadsheet.replaceImage;
+                          const resize =
+                            context.options.spreadsheet.resizeImage;
+                          generateImage(selectedArea).then((imageData) => {
+                            if (selectedImage && replace) {
+                              replaceImageInSummernote(
+                                context,
+                                imageData,
+                                selectedImage,
+                                spreadsheetState,
+                                resize
+                              );
+                            } else {
+                              insertNewImageToSummernote(
+                                context,
+                                imageData,
+                                spreadsheetState,
+                                resize
+                              );
+                            }
 
-                              $$("spreadsheet-window").close();
-                            });
-                          }
+                            $$("spreadsheet-window").close();
+                          });
                         }
                       },
                     },
@@ -534,7 +552,46 @@
         })
         .show();
     });
+
+    disableSaveButton();
   };
+
+  function enableSaveButton() {
+    const saveButton = document.querySelector(
+      ".custom-spreadsheet .save-button button"
+    );
+
+    if (saveButton) {
+      saveButton.disabled = false;
+
+      const parent = saveButton.parentElement;
+      const tooltipInstance = bootstrap.Tooltip.getInstance(parent);
+      if (tooltipInstance) {
+        tooltipInstance.dispose();
+      }
+      parent.removeAttribute("data-bs-toggle");
+      parent.removeAttribute("data-bs-placement");
+      parent.removeAttribute("data-bs-title");
+    }
+  }
+
+  function disableSaveButton() {
+    const saveButton = document.querySelector(
+      ".custom-spreadsheet .save-button button"
+    );
+
+    if (saveButton) {
+      saveButton.disabled = true;
+
+      const parent = saveButton.parentElement;
+
+      parent.setAttribute("data-bs-toggle", "tooltip");
+      parent.setAttribute("data-bs-placement", "top");
+      parent.setAttribute("data-bs-title", "Select at least one cell.");
+
+      new bootstrap.Tooltip(parent);
+    }
+  }
 
   // Register plugin actions
   $.extend($.summernote.plugins, {
@@ -568,8 +625,6 @@
               $(".note-popover").hide();
 
               openSpreadSheetModal(context, "Edit SpreadSheet", selectedImage);
-            } else {
-              window.alert("The selected image is not a spreadsheet!");
             }
           },
         });

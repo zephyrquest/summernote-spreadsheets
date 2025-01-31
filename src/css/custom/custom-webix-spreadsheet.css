@@ -205,6 +205,11 @@
     appearance: none !important;
 }
 
+.custom-spreadsheet .save-button button:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
 .webix_win_content .webix_template,
 .webix_win_content .webix_win_body .webix_view,
 .webix_win_content .webix_win_body .webix_el_box,
