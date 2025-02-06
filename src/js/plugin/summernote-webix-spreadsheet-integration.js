@@ -367,6 +367,47 @@
     oldImage.replaceWith(img);
   }
 
+  function handleCellsSelection(spreadsheet, selectedCells) {
+    // calculate the position of the selected area in the viewport
+
+    const length = selectedCells.length;
+
+    if (length < 2) {
+      disableSaveButton();
+      return;
+    }
+
+    const startRow = selectedCells[0].row;
+    const startColumn = selectedCells[0].column;
+
+    const endRow = selectedCells[length - 1].row;
+    const endColumn = selectedCells[length - 1].column;
+
+    selectionStartRow = startRow;
+    selectionEndRow = endRow;
+    selectionStartColumn = startColumn;
+    selectionEndColumn = endColumn;
+
+    let startTop = 0;
+
+    for (let i = 1; i < selectionStartRow; i++) {
+      const row = spreadsheet.getRow(i);
+      startTop += row.$height;
+    }
+
+    let startLeft = 0;
+
+    for (let i = 1; i < selectionStartColumn; i++) {
+      const column = spreadsheet.getColumn(i);
+      startLeft += column.width;
+    }
+
+    selectionStartTop = startTop;
+    selectionStartLeft = startLeft;
+
+    enableSaveButton();
+  }
+
   const openSpreadSheetModal = function (context, title, selectedImage) {
     webix.ready(function () {
       webix
@@ -406,46 +447,21 @@
                     : JSON.parse(selectedImage.attr("data-spreadsheetState")),
                 on: {
                   onAfterSelect: function (selectedCells) {
-                    // calculate the position of the selected area in the viewport
-
                     const spreadsheet = $$("spreadsheet-editor");
+                    handleCellsSelection(spreadsheet, selectedCells);
+                  },
+                  onItemClick: function (id, e, node) {
+                    // a workaround for handling multiple cells selection with shift + mouse click
+                    if (
+                      e.shiftKey &&
+                      node &&
+                      node.classList.contains("webix_cell")
+                    ) {
+                      const spreadsheet = $$("spreadsheet-editor");
+                      const selectedCells = spreadsheet.getSelectedId(true);
 
-                    const length = selectedCells.length;
-
-                    if (length == 0) {
-                      disableSaveButton();
-                      return;
+                      handleCellsSelection(spreadsheet, selectedCells);
                     }
-
-                    const startRow = selectedCells[0].row;
-                    const startColumn = selectedCells[0].column;
-
-                    const endRow = selectedCells[length - 1].row;
-                    const endColumn = selectedCells[length - 1].column;
-
-                    selectionStartRow = startRow;
-                    selectionEndRow = endRow;
-                    selectionStartColumn = startColumn;
-                    selectionEndColumn = endColumn;
-
-                    let startTop = 0;
-
-                    for (let i = 1; i < selectionStartRow; i++) {
-                      const row = spreadsheet.getRow(i);
-                      startTop += row.$height;
-                    }
-
-                    let startLeft = 0;
-
-                    for (let i = 1; i < selectionStartColumn; i++) {
-                      const column = spreadsheet.getColumn(i);
-                      startLeft += column.width;
-                    }
-
-                    selectionStartTop = startTop;
-                    selectionStartLeft = startLeft;
-
-                    enableSaveButton();
                   },
                   onAfterSheetShow: function (name) {
                     disableSaveButton();
@@ -587,7 +603,7 @@
 
       parent.setAttribute("data-bs-toggle", "tooltip");
       parent.setAttribute("data-bs-placement", "top");
-      parent.setAttribute("data-bs-title", "Select at least one cell.");
+      parent.setAttribute("data-bs-title", "Select at least two cells.");
 
       new bootstrap.Tooltip(parent);
     }
