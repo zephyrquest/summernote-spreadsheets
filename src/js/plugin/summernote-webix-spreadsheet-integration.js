@@ -164,6 +164,107 @@
     return gridSelected;
   }
 
+  // create the container that includes any merged cells (if present)
+  function captureSelectedSpans(activeSheet) {
+    const spans = activeSheet.content.spans;
+    const spanLayer = document.querySelector(
+      ".custom-spreadsheet .webix_ss_center .webix_span_layer"
+    );
+    const container = document.createElement("div");
+    if (!spanLayer || !spanLayer.children.length) {
+      return null;
+    }
+
+    spans.forEach((span, i) => {
+      if (span.length === 4) {
+        const [startRow, startColumn, columns, rows] = span;
+        const spanElement = spanLayer.children[i];
+
+        // check if spanElement is within the selected area
+        const isInsideSelection =
+          startRow <= selectionEndRow &&
+          startRow + rows - 1 >= selectionStartRow &&
+          startColumn <= selectionEndColumn &&
+          startColumn + columns - 1 >= selectionStartColumn;
+
+        if (spanElement && isInsideSelection) {
+          const spanElementClone = spanElement.cloneNode(true);
+
+          const currentLeft = parseFloat(spanElement.style.left) || 0;
+          const currentTop = parseFloat(spanElement.style.top) || 0;
+          const newLeft = currentLeft - selectionStartLeft;
+          const newTop = currentTop - selectionStartTop;
+          spanElementClone.style.left = `${newLeft}px`;
+          spanElementClone.style.top = `${newTop}px`;
+
+          // Retrieve and set border style to fix bug in image generation
+          const wssClass = Array.from(spanElementClone.classList).find((cls) =>
+            /^wss\d+$/.test(cls)
+          );
+
+          let borders = {
+            top: "",
+            right: "",
+            bottom: "",
+            left: "",
+          };
+
+          if (wssClass) {
+            const headStyles = Array.from(
+              document.querySelectorAll("head style")
+            );
+
+            const regex = new RegExp(`.wss_\\d+\\s+\\.(${wssClass})$`);
+
+            for (const styleTag of headStyles) {
+              const sheet = styleTag.sheet;
+              try {
+                for (const rule of sheet.cssRules || []) {
+                  if (regex.test(rule.selectorText)) {
+                    const style = rule.style;
+                    // Retrieve border styles if defined
+                    borders.top = style.getPropertyValue("border-top") || "";
+                    borders.right =
+                      style.getPropertyValue("border-right") || "";
+                    borders.bottom =
+                      style.getPropertyValue("border-bottom") || "";
+                    borders.left = style.getPropertyValue("border-left") || "";
+
+                    break;
+                  }
+                }
+              } catch (e) {}
+            }
+          }
+
+          // Apply default border for top and left and transparent border for right and bottom (if is not defined)
+          const defaultBorder = "1px solid #edeff0";
+
+          if (!borders.top) {
+            spanElementClone.style.borderTop = borders.bottom
+              ? borders.bottom
+              : defaultBorder;
+          }
+          if (!borders.left) {
+            spanElementClone.style.borderLeft = borders.right
+              ? borders.right
+              : defaultBorder;
+          }
+          if (!borders.right) {
+            spanElementClone.style.borderRight = "1px solid transparent";
+          }
+          if (!borders.bottom) {
+            spanElementClone.style.borderBottom = "1px solid transparent";
+          }
+
+          container.appendChild(spanElementClone);
+        }
+      }
+    });
+
+    return container;
+  }
+
   // create the container element that includes the charts and/or images above the cells (if present)
   function captureSelectedViewsAboveCells(activeSheet) {
     const views = activeSheet.content.views;
@@ -179,9 +280,9 @@
         const height = view[4].height;
 
         /*
-                Check if the view is inside the selected area. If a part of the view is outside the selected area,
-                the view is discarded.
-                 */
+          Check if the view is inside the selected area. If a part of the view is outside the selected area,
+          the view is discarded.
+        */
         if (
           leftPos - selectionStartLeft >= 0 &&
           leftPos + width <= selectionStartLeft + selectionWidth &&
@@ -236,20 +337,24 @@
     return null;
   }
 
-  function createSelectedArea(selectedCells, selectedViews) {
+  function createSelectedArea(selectedCells, selectedSpans, selectedViews) {
     if (!selectedCells) {
       return null;
     }
 
-    if (!selectedViews) {
-      return selectedCells;
+    const div = document.createElement("div");
+
+    div.appendChild(selectedCells);
+
+    if (selectedSpans) {
+      div.appendChild(selectedSpans);
     }
 
-    const div = document.createElement("div");
-    div.appendChild(selectedCells);
-    Array.from(selectedViews.children).forEach((child) => {
-      div.appendChild(child);
-    });
+    if (selectedViews) {
+      Array.from(selectedViews.children).forEach((child) => {
+        div.appendChild(child);
+      });
+    }
 
     div.style.width = selectedCells.style.width;
     div.style.height = selectedCells.style.height;
@@ -266,6 +371,7 @@
     const div = document.createElement("div");
     div.style.width = selectedArea.style.width;
     div.style.height = selectedArea.style.height;
+    div.classList.add("webix_view", "webix_dtable", "webix_ssheet_table");
 
     const styleElements = document.querySelectorAll(
       'style[type="text/css"][media="screen,print"]'
@@ -277,7 +383,6 @@
           : styleElements[0];
       if (styleElement) {
         div.appendChild(styleElement);
-
         const styleContent = styleElement.textContent;
         const match = styleContent.match(/\.wss_(\d+)/);
         if (match && match[1]) {
@@ -523,12 +628,13 @@
                         }
 
                         const selectedCells = captureSelectedCells(spreadsheet);
-
+                        const selectedSpans = captureSelectedSpans(activeSheet);
                         const selectedViews =
                           captureSelectedViewsAboveCells(activeSheet);
 
                         const selectedArea = createSelectedArea(
                           selectedCells,
+                          selectedSpans,
                           selectedViews
                         );
 
