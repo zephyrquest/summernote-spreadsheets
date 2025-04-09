@@ -1,4 +1,4 @@
-# Summernote Webix Spreadsheet Integration
+# Summernote Spreadsheets
 
 This plugin extends Summernote by integrating the Webix Spreadsheet widget, allowing users to work with
 spreadsheets directly within the Summernote editor. With this plugin, you can seamlessly manage spreadsheet data,
@@ -26,7 +26,10 @@ create visual snapshots of specific cell ranges to add them as images to your Su
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 
 <!-- Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -34,28 +37,54 @@ create visual snapshots of specific cell ranges to add them as images to your Su
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
 <!-- Summernote -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet"
-      type="text/css"/>
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js" type="text/javascript"
-        charset="utf-8"></script>
+<link
+  href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css"
+  rel="stylesheet"
+  type="text/css"
+/>
+<script
+  src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"
+  type="text/javascript"
+  charset="utf-8"
+></script>
 
 <!-- Webix -->
-<link href="src/css/webix/webix.min.css" rel="stylesheet" type="text/css"/>
-<script src="src/js/webix/webix.js" type="text/javascript" charset="utf-8"></script>
+<link href="src/css/webix/webix.min.css" rel="stylesheet" type="text/css" />
+<script
+  src="src/js/webix/webix.js"
+  type="text/javascript"
+  charset="utf-8"
+></script>
 
 <!-- Webix SpreadSheet -->
-<link href="src/css/webix/spreadsheet.min.css" rel="stylesheet" type="text/css"/>
-<script src="src/js/webix/spreadsheet.js" type="text/javascript" charset="utf-8"></script>
+<link
+  href="src/css/webix/spreadsheet.min.css"
+  rel="stylesheet"
+  type="text/css"
+/>
+<script
+  src="src/js/webix/spreadsheet.js"
+  type="text/javascript"
+  charset="utf-8"
+></script>
 ```
 
 - Include the plugin (see also index.html)
 
 ```html
 <!-- Webix SpreadSheet Integration for Summernote -->
-<script src="src/js/plugin/summernote-webix-spreadsheet-integration.js" type="text/javascript" charset="UTF-8"></script>
+<script
+  src="src/js/plugin/summernote-webix-spreadsheet-integration.js"
+  type="text/javascript"
+  charset="UTF-8"
+></script>
 
 <!-- Custom Stylesheet -->
-<link href="src/css/custom/custom-webix-spreadsheet.css" rel="stylesheet" type="text/css"/>
+<link
+  href="src/css/custom/custom-webix-spreadsheet.css"
+  rel="stylesheet"
+  type="text/css"
+/>
 ```
 
 - Create an element with id equal to `editor` as container for summernote (see also index.html)
@@ -107,4 +136,5 @@ $(document).ready(function () {
 ```
 
 ## Reporting Issues
+
 If you encounter any problems or discover bugs, feel free to open a new issue. Your feedback is greatly appreciated!

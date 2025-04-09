@@ -117,7 +117,7 @@
         }
 
         const value = spreadsheet.getCellValue(j, i, false);
-        if (value) {
+        if (value !== undefined && value !== null) {
           const div = document.createElement("div");
           div.style.position = "absolute";
           div.style.whiteSpace = "nowrap";
